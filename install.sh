@@ -1,6 +1,14 @@
 #!/bin/bash
 
-# Install Packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+# Get the absolute path to this script.
+SCRIPT_PATH="$(realpath "$0")"
+SCRIPT_PATH="$(dirname "$SCRIPT_PATH")"
 
+# Execute everything in the install directory.
+for install_script in "$SCRIPT_PATH"/install/*.sh; do
+    echo "[+] Running $install_script"
+    /bin/bash "$install_script"
+done
+
+# Done.
+echo "[+] All is installed."
