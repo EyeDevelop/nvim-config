@@ -68,4 +68,7 @@ return require('packer').startup(function(use)
     -- File manager
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
+
+    -- Git BLAME
+    use 'APZelos/blamer.nvim'
 end)
