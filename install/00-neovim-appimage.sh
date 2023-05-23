@@ -14,14 +14,23 @@ install_linux() {
   else
     echo "[!] $HOME/.bin not yet found in the path. Adding..."
 
-    # Add the .bin folder to the user PATH
-    cat << EOF >> "$HOME/.profile"
-# Added by NeoVim config
-export PATH="$HOME/.bin:\$PATH"
-EOF
+    # If the user uses ZSH, put in ~/.zprofile
+    # Otherwise, default to ~/.profile
+    shell_name="$(basename "$SHELL")"
+    if [[ "$shell_name" == "zsh" ]]; then
+      profile_file="$HOME/.zprofile"
+    else
+      profile_file="$HOME/.profile"
+    fi
+
+    {
+      echo '# Added by Nvim config.'
+      echo "export PATH=\"$HOME/.bin:\$PATH\""
+    } >> "$profile_file"
 
     # Source new profile.
-    source "$HOME/.profile"
+    echo "[+] To have Nvim in the path, start a new shell or run:"
+    echo "[+] source $profile_file"
   fi
 }
 

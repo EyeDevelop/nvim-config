@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if we are in an SSH session. Stop if we are.
+if [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
+  echo "[+] Running in SSH session. Not installing fonts."
+  exit 0
+fi
+
 # Install Hack font
 mkdir -p ~/.local/share/fonts/tff
 
