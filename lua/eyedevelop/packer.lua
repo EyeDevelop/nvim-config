@@ -71,4 +71,16 @@ return require('packer').startup(function(use)
 
     -- Git BLAME
     use 'APZelos/blamer.nvim'
+
+    -- Tab support
+    use {
+        'romgrk/barbar.nvim',
+        requires = {
+            { 'lewis6991/gitsigns.nvim' },  -- Git status
+            { 'nvim-tree/nvim-web-devicons' },  -- Icons
+        }
+    }
+
+    -- Automatically set indent values
+    use 'Darazaki/indent-o-matic'
 end)
