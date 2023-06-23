@@ -83,4 +83,7 @@ return require('packer').startup(function(use)
 
     -- Automatically set indent values
     use 'Darazaki/indent-o-matic'
+
+    -- Auto match brackets.
+    use 'windwp/nvim-autopairs'
 end)
